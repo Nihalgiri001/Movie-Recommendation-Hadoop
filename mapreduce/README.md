@@ -140,7 +140,7 @@ jar -cvf kmeans.jar KMeansMapper*.class KMeansReducer*.class
 
 # Create initial centroids file (K=3)
 cat > centroids.txt << 'EOF'
-0	0.3,0.1
+0  0.3,0.1
 1	0.6,0.5
 2	0.8,0.9
 EOF

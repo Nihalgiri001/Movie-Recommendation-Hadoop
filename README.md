@@ -641,7 +641,13 @@ hive -f hive/recommendation_analysis.sql
 hive
 USE movie_recommender;
 SELECT * FROM movies LIMIT 5;
-SELECT genre, COUNT(*) FROM movie_genres GROUP BY genre ORDER BY COUNT(*) DESC;
+
+SELECT
+    genre,
+    COUNT(*) AS movie_count
+FROM movie_genres
+GROUP BY genre
+ORDER BY movie_count DESC;
 ```
 
 ---
@@ -654,13 +660,13 @@ SELECT genre, COUNT(*) FROM movie_genres GROUP BY genre ORDER BY COUNT(*) DESC;
 cd big-data-movie-recommender
 
 # Movie analysis
-pig pig/movie_analysis.pig
+pig -param USER=$(whoami) pig/movie_analysis.pig
 
 # Genre analysis
-pig pig/genre_analysis.pig
+pig -param USER=$(whoami) pig/genre_analysis.pig
 
 # Word count
-pig pig/movie_wordcount.pig
+pig -param USER=$(whoami) pig/movie_wordcount.pig
 ```
 
 ### Pig Concepts Demonstrated

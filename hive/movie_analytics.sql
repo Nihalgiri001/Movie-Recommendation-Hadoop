@@ -44,12 +44,11 @@ WHERE vote_average > 0;
 -- ============================================================
 SELECT '--- Query 3: Minimum Rating ---';
 SELECT
-    MIN(vote_average) AS min_rating,
-    title AS movie_title
+    title AS movie_title,
+    vote_average AS rating
 FROM movies
 WHERE vote_average > 0
-GROUP BY title, vote_average
-ORDER BY vote_average ASC
+ORDER BY rating ASC
 LIMIT 5;
 
 -- ============================================================
